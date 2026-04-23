@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OneKey Academy x 厦门大学合作提案</title>
+  <style>
+    :root {
+      --ink: #101414;
+      --muted: #63706b;
+      --paper: #f4efe4;
+      --card: rgba(255, 252, 244, 0.94);
+      --line: rgba(16, 20, 20, 0.14);
+      --green: #a7d736;
+      --green-deep: #3f5f0a;
+      --forest: #17211d;
+      --blue: #173c54;
+      --sand: #e7d7bb;
+      --white: #fffdf8;
+      --shadow: 0 24px 80px rgba(16, 20, 20, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Avenir Next", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at 10% 4%, rgba(167, 215, 54, 0.24), transparent 28rem),
+        radial-gradient(circle at 88% 18%, rgba(23, 60, 84, 0.18), transparent 25rem),
+        linear-gradient(145deg, #fbf7ed 0%, #e7ddcc 50%, #f8f4ea 100%);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .site-shell {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .site-shell::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      opacity: 0.34;
+      background-image:
+        linear-gradient(rgba(16, 20, 20, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 20, 20, 0.04) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: linear-gradient(to bottom, black, transparent 72%);
+      pointer-events: none;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 0.9rem clamp(1.25rem, 4vw, 4.5rem);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(251, 247, 237, 0.82);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-logo {
+      width: 2.35rem;
+      height: 2.35rem;
+      border-radius: 0.8rem;
+      object-fit: contain;
+      box-shadow: 0 10px 24px rgba(16, 20, 20, 0.12);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      color: var(--muted);
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(24rem, 1.05fr);
+      gap: clamp(2rem, 5vw, 6rem);
+      align-items: center;
+      padding: clamp(4rem, 8vw, 8rem) clamp(1.25rem, 5vw, 6rem) 4rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin: 0 0 1.2rem;
+      color: var(--green-deep);
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 2.4rem;
+      height: 2px;
+      background: var(--green);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "STSong", serif;
+      font-weight: 800;
+    }
+
+    h1 {
+      max-width: 12ch;
+      margin-bottom: 1.55rem;
+      font-size: clamp(3.8rem, 8vw, 7.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.065em;
+    }
+
+    .hero-lede {
+      max-width: 41rem;
+      color: #333c38;
+      font-size: clamp(1.08rem, 1.55vw, 1.32rem);
+      line-height: 1.95;
+      text-wrap: pretty;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 2rem;
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+    }
+
+    .hero-proof {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.7rem;
+      max-width: 42rem;
+      margin-top: 2.2rem;
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+    }
+
+    .hero-proof span {
+      padding: 0.9rem 1rem;
+      border: 1px solid rgba(16, 20, 20, 0.13);
+      border-radius: 1.1rem;
+      background: rgba(255, 252, 244, 0.68);
+      box-shadow: 0 12px 36px rgba(16, 20, 20, 0.06);
+      color: #37423e;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3.1rem;
+      padding: 0.85rem 1.25rem;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      font-weight: 800;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .button.primary {
+      background: var(--ink);
+      color: var(--white);
+      box-shadow: 0 12px 30px rgba(16, 20, 20, 0.18);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(16, 20, 20, 0.14);
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 40rem;
+      padding: 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 2.2rem;
+      background: linear-gradient(160deg, rgba(16, 20, 20, 0.96), rgba(28, 42, 35, 0.92));
+      box-shadow: 0 30px 90px rgba(16, 20, 20, 0.22);
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -20% -18% auto auto;
+      width: 25rem;
+      height: 25rem;
+      border-radius: 50%;
+      background: rgba(167, 215, 54, 0.34);
+      filter: blur(24px);
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: 0.8rem;
+      border-radius: 1.65rem;
+      background:
+        linear-gradient(180deg, rgba(16, 20, 20, 0.06), rgba(16, 20, 20, 0.58)),
+        linear-gradient(90deg, rgba(16, 20, 20, 0.34), transparent 54%);
+      pointer-events: none;
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 0.8rem;
+      border-radius: 1.65rem;
+      object-fit: cover;
+      width: calc(100% - 1.6rem);
+      height: calc(100% - 1.6rem);
+      opacity: 0.9;
+    }
+
+    .hero-card-content {
+      position: absolute;
+      z-index: 2;
+      left: 2rem;
+      right: 2rem;
+      bottom: 2rem;
+      padding: 1.4rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 1.4rem;
+      color: var(--white);
+      background: rgba(16, 20, 20, 0.72);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-card-content strong {
+      display: block;
+      margin-bottom: 0.45rem;
+      color: var(--green);
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+      font-size: 0.84rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero-card-content p {
+      margin-bottom: 0;
+      font-size: 1.12rem;
+      line-height: 1.75;
+    }
+
+    section {
+      padding: clamp(4rem, 8vw, 7.2rem) clamp(1.25rem, 5vw, 6rem);
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 0.78fr) minmax(18rem, 0.72fr);
+      gap: clamp(1.5rem, 4vw, 4rem);
+      align-items: end;
+      margin-bottom: clamp(2rem, 5vw, 4rem);
+    }
+
+    .section-heading h2 {
+      margin-bottom: 0;
+      font-size: clamp(2.35rem, 4.6vw, 5rem);
+      line-height: 1.08;
+      letter-spacing: -0.055em;
+    }
+
+    .section-heading p {
+      margin-bottom: 0;
+      color: #44504b;
+      font-size: 1rem;
+      line-height: 1.95;
+      text-wrap: pretty;
+    }
+
+    .mission {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: stretch;
+    }
+
+    .mission-panel {
+      padding: clamp(1.5rem, 3vw, 2.2rem);
+      border: 1px solid var(--line);
+      border-radius: 1.8rem;
+      background: rgba(255, 252, 244, 0.82);
+      box-shadow: 0 18px 55px rgba(16, 20, 20, 0.08);
+    }
+
+    .mission-panel.dark {
+      color: var(--white);
+      background:
+        linear-gradient(135deg, rgba(16, 20, 20, 0.9), rgba(23, 60, 84, 0.9)),
+        radial-gradient(circle at top right, rgba(167, 215, 54, 0.34), transparent 18rem);
+    }
+
+    .mission-panel h3 {
+      margin-bottom: 1rem;
+      font-size: clamp(1.55rem, 2.7vw, 2.65rem);
+      line-height: 1.18;
+      letter-spacing: -0.04em;
+    }
+
+    .mission-panel p {
+      color: inherit;
+      line-height: 1.9;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1.4rem;
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+    }
+
+    .pill {
+      padding: 0.55rem 0.85rem;
+      border: 1px solid rgba(16, 20, 20, 0.16);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.36);
+      color: #39423f;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .dark .pill {
+      border-color: rgba(255, 255, 255, 0.18);
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 1.8rem;
+      background: rgba(16, 20, 20, 0.16);
+      box-shadow: var(--shadow);
+    }
+
+    .stat {
+      min-height: 9.2rem;
+      padding: 1.25rem;
+      background: rgba(255, 252, 244, 0.92);
+    }
+
+    .stat strong {
+      display: block;
+      margin-bottom: 0.45rem;
+      font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+      font-size: clamp(1.9rem, 3.4vw, 3.3rem);
+      line-height: 1;
+      letter-spacing: -0.08em;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .cases {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
+      margin-top: 1.6rem;
+    }
+
+    .case-card {
+      display: flex;
+      min-height: 100%;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 1.8rem;
+      background: var(--card);
+      box-shadow: 0 20px 64px rgba(16, 20, 20, 0.1);
+    }
+
+    .case-card img {
+      width: 100%;
+      height: 16.2rem;
+      object-fit: cover;
+    }
+
+    .case-card:nth-child(2) img {
+      object-position: center 40%;
+    }
+
+    .case-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 1.45rem;
+    }
+
+    .case-kicker {
+      margin-bottom: 0.7rem;
+      color: var(--green-deep);
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .case-card h3 {
+      margin-bottom: 0.8rem;
+      font-size: 1.5rem;
+      line-height: 1.28;
+      letter-spacing: -0.04em;
+    }
+
+    .case-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.55rem;
+      margin-bottom: 1rem;
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+    }
+
+    .case-meta span {
+      padding: 0.7rem;
+      border-radius: 1rem;
+      background: rgba(16, 20, 20, 0.05);
+      color: #3d4743;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .case-card ul,
+    .plan-card ul,
+    .value-card ul {
+      padding-left: 1.1rem;
+      margin: 0;
+      color: #3f4a45;
+      line-height: 1.82;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 1fr;
+      grid-auto-rows: 18rem;
+      gap: 1rem;
+    }
+
+    .gallery figure {
+      position: relative;
+      margin: 0;
+      overflow: hidden;
+      border-radius: 1.6rem;
+      background: #111;
+      box-shadow: 0 18px 60px rgba(16, 20, 20, 0.12);
+    }
+
+    .gallery figure:nth-child(1),
+    .gallery figure:nth-child(4) {
+      grid-row: span 2;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.92;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+
+    .gallery figure:hover img {
+      transform: scale(1.04);
+      opacity: 1;
+    }
+
+    figcaption {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      padding: 0.8rem 1rem;
+      border-radius: 1rem;
+      color: var(--white);
+      background: rgba(16, 20, 20, 0.62);
+      backdrop-filter: blur(14px);
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+      font-size: 0.84rem;
+      font-weight: 800;
+    }
+
+    .plan {
+      color: var(--white);
+      background:
+        radial-gradient(circle at 12% 12%, rgba(167, 215, 54, 0.28), transparent 22rem),
+        linear-gradient(135deg, #101414 0%, #192820 48%, #173c54 100%);
+    }
+
+    .plan .section-heading p,
+    .plan .eyebrow {
+      color: rgba(255, 253, 248, 0.76);
+    }
+
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .xmu-showcase {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(20rem, 0.72fr);
+      gap: 1.2rem;
+      align-items: stretch;
+      margin-bottom: 1.2rem;
+    }
+
+    .xmu-hero-panel {
+      position: relative;
+      min-height: 32rem;
+      padding: clamp(1.5rem, 3vw, 2.4rem);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 2rem;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.05)),
+        radial-gradient(circle at 85% 18%, rgba(167, 215, 54, 0.26), transparent 16rem);
+      overflow: hidden;
+    }
+
+    .xmu-hero-panel::after {
+      content: "XMU";
+      position: absolute;
+      right: -0.8rem;
+      bottom: -1.4rem;
+      color: rgba(255, 255, 255, 0.06);
+      font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+      font-size: clamp(6rem, 16vw, 14rem);
+      font-weight: 900;
+      letter-spacing: -0.14em;
+      pointer-events: none;
+    }
+
+    .theme-label {
+      display: inline-flex;
+      margin-bottom: 1.2rem;
+      padding: 0.55rem 0.85rem;
+      border: 1px solid rgba(167, 215, 54, 0.36);
+      border-radius: 999px;
+      color: var(--green);
+      background: rgba(167, 215, 54, 0.1);
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .xmu-hero-panel h3 {
+      max-width: 12ch;
+      margin-bottom: 1rem;
+      color: var(--white);
+      font-size: clamp(2.1rem, 4.6vw, 4.8rem);
+      line-height: 1.06;
+      letter-spacing: -0.06em;
+    }
+
+    .xmu-hero-panel p {
+      position: relative;
+      z-index: 1;
+      max-width: 44rem;
+      color: rgba(255, 253, 248, 0.78);
+      font-size: 1.05rem;
+      line-height: 1.9;
+    }
+
+    .xmu-keypoints {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .xmu-keypoints span {
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 1.15rem;
+      background: rgba(16, 20, 20, 0.22);
+      color: rgba(255, 253, 248, 0.9);
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .agenda-panel {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .agenda-item {
+      display: grid;
+      grid-template-columns: 4.6rem 1fr;
+      gap: 1rem;
+      padding: 1.05rem;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 1.35rem;
+      background: rgba(255, 255, 255, 0.09);
+      backdrop-filter: blur(16px);
+    }
+
+    .agenda-time {
+      color: var(--green);
+      font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+      font-size: 1.05rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .agenda-item h4 {
+      margin: 0 0 0.35rem;
+      color: var(--white);
+      font-size: 1.05rem;
+    }
+
+    .agenda-item p {
+      margin: 0;
+      color: rgba(255, 253, 248, 0.72);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    .xmu-section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 2.2rem 0 1rem;
+      color: rgba(255, 253, 248, 0.92);
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .xmu-section-title::before {
+      content: "";
+      width: 2rem;
+      height: 2px;
+      background: var(--green);
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .support-card {
+      min-height: 13rem;
+      padding: 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 1.45rem;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+    }
+
+    .support-card strong {
+      display: block;
+      margin-bottom: 0.55rem;
+      color: var(--green);
+      font-family: "Avenir Next", "PingFang SC", sans-serif;
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .support-card h3 {
+      margin-bottom: 0.7rem;
+      color: var(--white);
+      font-size: 1.35rem;
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+    }
+
+    .support-card p {
+      margin: 0;
+      color: rgba(255, 253, 248, 0.72);
+      line-height: 1.75;
+    }
+
+    .xmu-bottom {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .timeline.dark-timeline {
+      margin-top: 0;
+    }
+
+    .dark-timeline .time-card {
+      min-height: 12rem;
+      border-color: rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .dark-timeline .time-card::after {
+      color: rgba(255, 255, 255, 0.05);
+    }
+
+    .dark-timeline .time-card h3 {
+      color: var(--green);
+    }
+
+    .dark-timeline .time-card p {
+      color: rgba(255, 253, 248, 0.74);
+    }
+
+    .xmu-values {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .xmu-value {
+      padding: 1.1rem;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 1.25rem;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .xmu-value h3 {
+      margin-bottom: 0.45rem;
+      color: var(--white);
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .xmu-value p {
+      margin: 0;
+      color: rgba(255, 253, 248, 0.72);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .plan-card {
+      padding: 1.4rem;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 1.45rem;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+    }
+
+    .plan-card h3 {
+      margin-bottom: 0.8rem;
+      color: var(--green);
+      font-size: 1.3rem;
+      letter-spacing: -0.02em;
+    }
+
+    .plan-card p,
+    .plan-card ul {
+      color: rgba(255, 253, 248, 0.78);
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .time-card {
+      position: relative;
+      min-height: 14rem;
+      padding: 1.5rem;
+      border: 1px solid var(--line);
+      border-radius: 1.55rem;
+      background: rgba(255, 252, 244, 0.86);
+      overflow: hidden;
+    }
+
+    .time-card::after {
+      content: attr(data-step);
+      position: absolute;
+      right: -0.4rem;
+      bottom: -1.3rem;
+      color: rgba(16, 20, 20, 0.06);
+      font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+      font-size: 5rem;
+      font-weight: 900;
+      letter-spacing: -0.1em;
+    }
+
+    .time-card h3 {
+      margin-bottom: 0.8rem;
+      font-size: 1.45rem;
+      letter-spacing: -0.04em;
+    }
+
+    .time-card p {
+      color: #48534f;
+      line-height: 1.75;
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .value-card {
+      min-height: 16rem;
+      padding: 1.35rem;
+      border: 1px solid var(--line);
+      border-radius: 1.45rem;
+      background: var(--card);
+      box-shadow: 0 14px 42px rgba(16, 20, 20, 0.07);
+    }
+
+    .value-card h3 {
+      margin-bottom: 0.8rem;
+      font-size: 1.28rem;
+      letter-spacing: -0.03em;
+    }
+
+    .closing {
+      padding-bottom: clamp(4rem, 8vw, 8rem);
+    }
+
+    .closing-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.55fr);
+      gap: 2rem;
+      align-items: center;
+      padding: clamp(2rem, 5vw, 4rem);
+      border-radius: 2.2rem;
+      color: var(--white);
+      background:
+        linear-gradient(135deg, rgba(16, 20, 20, 0.94), rgba(23, 60, 84, 0.92)),
+        radial-gradient(circle at 80% 20%, rgba(167, 215, 54, 0.3), transparent 22rem);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .closing-card h2 {
+      margin-bottom: 1rem;
+      font-size: clamp(2.5rem, 5.4vw, 5.8rem);
+      line-height: 1.04;
+      letter-spacing: -0.06em;
+    }
+
+    .closing-card p {
+      max-width: 52rem;
+      color: rgba(255, 253, 248, 0.78);
+      font-size: 1.06rem;
+      line-height: 1.9;
+    }
+
+    .closing-badge {
+      display: grid;
+      min-height: 17rem;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 2rem;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--green);
+      font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 900;
+      letter-spacing: -0.12em;
+    }
+
+    .reveal {
+      animation: rise 0.8s ease both;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .hero,
+      .section-heading,
+      .mission,
+      .closing-card {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .cases,
+      .plan-grid,
+      .xmu-showcase,
+      .xmu-bottom,
+      .timeline,
+      .values {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .support-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .xmu-bottom {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        position: static;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 0.2rem;
+        white-space: nowrap;
+      }
+
+      .hero-proof {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 3rem;
+      }
+
+      h1 {
+        max-width: 9ch;
+        font-size: clamp(3.6rem, 22vw, 5.8rem);
+      }
+
+      .hero-card {
+        min-height: 28rem;
+        border-radius: 1.6rem;
+      }
+
+      .hero-card-content {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+      }
+
+      .stats,
+      .cases,
+      .plan-grid,
+      .xmu-showcase,
+      .xmu-keypoints,
+      .support-grid,
+      .xmu-bottom,
+      .xmu-values,
+      .timeline,
+      .values,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        min-height: 7.5rem;
+      }
+
+      .gallery {
+        grid-auto-rows: 15rem;
+      }
+
+      .gallery figure:nth-child(1),
+      .gallery figure:nth-child(4) {
+        grid-row: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <nav class="nav">
+      <a class="brand" href="#top" aria-label="OneKey Academy">
+        <img class="brand-logo" src="logo.svg" alt="OneKey logo" />
+        <span>OneKey Academy</span>
+      </a>
+      <div class="nav-links" aria-label="页面导航">
+        <a href="#mission">合作初心</a>
+        <a href="#cases">校园经验</a>
+        <a href="#xmu-plan">厦大方案</a>
+        <a href="#xmu-value">校方价值</a>
+      </div>
+    </nav>
+
+    <header class="hero" id="top">
+      <div class="reveal">
+        <p class="eyebrow">Collaboration Proposal</p>
+        <h1>与厦门大学共建一场数字安全教育活动</h1>
+        <p class="hero-lede">
+          OneKey Academy 希望与厦门大学携手，将已在深圳大学、北京大学、香港中文大学深圳验证过的校园安全专题活动，落地为校园行中的一站高质量合作。
+        </p>
+        <div class="hero-proof" aria-label="厦门大学站活动定位">
+          <span>OneKey Academy 校园行 · 厦门大学站</span>
+          <span>建议时长 1.5-2 小时</span>
+          <span>安全专题 + 问答 + 知识竞赛</span>
+        </div>
+        <div class="hero-actions">
+          <a class="button primary" href="#xmu-plan">查看厦大合作方案</a>
+          <a class="button" href="#cases">了解过往校园活动</a>
+        </div>
+      </div>
+
+      <div class="hero-card reveal" style="animation-delay: 0.12s;">
+        <img class="hero-photo" src="过往活动照片/香港中文大学/OOO08462-opq4509709088.jpg" alt="OneKey Academy 在香港中文大学深圳活动现场" />
+        <div class="hero-card-content">
+          <strong>From Campus To Campus</strong>
+          <p>从真实校园活动出发，把数字资产安全、钱包安全和 Web3 风险意识带给更多青年学生。</p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="mission">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Why Xiamen University</p>
+            <h2>不是一次品牌露出，而是一场面向学生的安全教育合作。</h2>
+          </div>
+          <p>
+            随着区块链技术和数字资产应用持续发展，青年学生正在更早接触 Web3 世界。OneKey Academy 希望通过校企合作，补充课堂之外的实践安全认知，帮助学生理解数字主权、钱包安全与真实攻击风险。
+          </p>
+        </div>
+
+        <div class="mission">
+          <article class="mission-panel dark">
+            <h3>OneKey 的合作初心</h3>
+            <p>
+              OneKey 不只是提供硬件钱包工具，更希望培养具备安全意识的下一代 Web3 参与者。校园活动的目标，是用学生听得懂、能参与、愿意提问的方式，把复杂的安全问题变成可理解、可实践的知识。
+            </p>
+            <div class="pill-row">
+              <span class="pill">数字资产安全</span>
+              <span class="pill">钱包科普</span>
+              <span class="pill">攻击案例解析</span>
+              <span class="pill">就业与行业交流</span>
+            </div>
+          </article>
+
+          <article class="mission-panel">
+            <h3>厦门大学合作定位</h3>
+            <p>
+              基于前三站校园活动经验，OneKey Academy 希望与厦门大学共同策划一场主题清晰、流程成熟、物料完备、互动充分的安全专题活动。活动可在校内教室或阶梯教室举办，也可根据校方安排调整为线上分享形式。
+            </p>
+            <div class="pill-row">
+              <span class="pill">1.5-2 小时活动</span>
+              <span class="pill">专场安全主题</span>
+              <span class="pill">校内社团协作</span>
+              <span class="pill">OneKey 物料支持</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="cases">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Proven Campus Model</p>
+            <h2>三所高校验证过的 OneKey Academy 校园活动模型。</h2>
+          </div>
+          <p>
+            过往三站活动证明，安全主题在高校 Web3 社群和相关学生群体中具备稳定吸引力，也能带来高质量提问、社群沉淀和实习就业交流。
+          </p>
+        </div>
+
+        <div class="stats" aria-label="过往活动汇总数据">
+          <div class="stat"><strong>3</strong><span>已落地高校活动</span></div>
+          <div class="stat"><strong>230+</strong><span>累计报名</span></div>
+          <div class="stat"><strong>120+</strong><span>累计到场</span></div>
+          <div class="stat"><strong>24+</strong><span>优质现场提问</span></div>
+          <div class="stat"><strong>140+</strong><span>社群沉淀</span></div>
+          <div class="stat"><strong>13+</strong><span>岗位投递兴趣</span></div>
+        </div>
+
+        <div class="cases">
+          <article class="case-card">
+            <img src="过往活动照片/深圳大学/IMG_20240525_140215.png" alt="深圳大学 OneKey Academy 活动签到与海报现场" />
+            <div class="case-body">
+              <div class="case-kicker">Campus Stop 01</div>
+              <h3>深圳大学</h3>
+              <div class="case-meta">
+                <span>报名 100+</span>
+                <span>到场 50+</span>
+                <span>学生 70%</span>
+              </div>
+              <ul>
+                <li>深大校园内阶梯大教室，设备齐全，环境舒适。</li>
+                <li>45 分钟专题分享，听众专注，现场诞生 6 个优质提问。</li>
+                <li>知识竞赛沉淀联系方式 30+。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="case-card">
+            <img src="过往活动照片/北京大学/微信图片_20260329222430_739_41.jpg" alt="北京大学 OneKey Academy 课堂分享现场" />
+            <div class="case-body">
+              <div class="case-kicker">Campus Stop 02</div>
+              <h3>北京大学</h3>
+              <div class="case-meta">
+                <span>报名 60+</span>
+                <span>到场 30+</span>
+                <span>社群 40+</span>
+              </div>
+              <ul>
+                <li>北大校园教学教室，以区块链社团学生为主。</li>
+                <li>60 分钟安全专题，同学听讲认真，现场互动积极。</li>
+                <li>诞生 8 个优质提问，5+ 同学表达实习投递意向。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="case-card">
+            <img src="过往活动照片/香港中文大学/OOO08638-opq4509651806.jpg" alt="香港中文大学（深圳） OneKey Academy 活动现场" />
+            <div class="case-body">
+              <div class="case-kicker">Campus Stop 03</div>
+              <h3>香港中文大学（深圳）</h3>
+              <div class="case-meta">
+                <span>报名 70+</span>
+                <span>到场 40+</span>
+                <span>学生 90%</span>
+              </div>
+              <ul>
+                <li>港中文深圳阶梯教室，专题分享时长 70 分钟。</li>
+                <li>软件与硬件钱包攻击案例演讲反馈积极。</li>
+                <li>现场诞生 10+ 个优质提问，活动后仍有大量同学继续交流。</li>
+                <li>建立 100+ 人活动社群，8+ 同学表示已经投递岗位。</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Event Moments</p>
+            <h2>过往活动现场照片</h2>
+          </div>
+          <p>
+            从签到、宣讲、案例分享到互动交流，OneKey Academy 已形成清晰的校园活动执行方式。
+          </p>
+        </div>
+
+        <div class="gallery">
+          <figure>
+            <img src="过往活动照片/深圳大学/IMG_2010 (11).png" alt="深圳大学 OneKey Academy 活动合影或现场图" />
+            <figcaption>深圳大学｜安全专题活动</figcaption>
+          </figure>
+          <figure>
+            <img src="过往活动照片/北京大学/微信图片_20260327175045_716_41.jpg" alt="北京大学 OneKey Academy 活动现场竖图" />
+            <figcaption>北京大学｜安全专题分享</figcaption>
+          </figure>
+          <figure>
+            <img src="过往活动照片/深圳大学/IMG_20240525_140215.png" alt="深圳大学 OneKey 活动入口海报" />
+            <figcaption>深圳大学｜现场物料与签到</figcaption>
+          </figure>
+          <figure>
+            <img src="过往活动照片/香港中文大学/OOO08462-opq4509709088.jpg" alt="香港中文大学深圳 OneKey Academy 阶梯教室现场" />
+            <figcaption>香港中文大学（深圳）｜阶梯教室分享</figcaption>
+          </figure>
+          <figure>
+            <img src="过往活动照片/北京大学/微信图片_20260329222430_739_41.jpg" alt="北京大学课堂分享现场横图" />
+            <figcaption>北京大学｜课堂内容展示</figcaption>
+          </figure>
+          <figure>
+            <img src="过往活动照片/香港中文大学/OOO08638-opq4509651806.jpg" alt="香港中文大学深圳现场问答或宣讲图" />
+            <figcaption>香港中文大学（深圳）｜活动交流现场</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="plan" id="xmu-plan">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">XMU Collaboration Plan</p>
+            <h2>厦门大学站：一场可执行、可参与、可汇报的安全专题活动。</h2>
+          </div>
+          <p>
+            基于前三站校园行经验，厦门大学站建议聚焦“Web3 黑暗森林生存指南”，用清晰议程、明确分工和可视化物料，让校方能够快速判断活动价值与执行可行性。
+          </p>
+        </div>
+
+        <div class="xmu-showcase">
+          <article class="xmu-hero-panel">
+            <span class="theme-label">Proposed Theme</span>
+            <h3>A Survivor’s Guide to the Web3 Dark Forest</h3>
+            <p>
+              面向厦门大学学生，以“数字资产安全”为核心，讲清从 Web2 到 Web3 的数字主权变化、钱包基础概念、冷钱包与热钱包差异，以及真实软件钱包攻击案例。活动不是泛泛介绍 Web3，而是帮助学生建立可落地的安全判断能力。
+            </p>
+            <div class="xmu-keypoints">
+              <span>建议时长：1.5-2 小时</span>
+              <span>形式：线下教室 / 阶梯教室</span>
+              <span>结构：分享 + 问答 + 竞赛 + 交流</span>
+            </div>
+          </article>
+
+          <aside class="agenda-panel" aria-label="厦门大学站活动流程">
+            <article class="agenda-item">
+              <div class="agenda-time">00-10</div>
+              <div>
+                <h4>开场与合作介绍</h4>
+                <p>介绍 OneKey Academy 校园行背景、活动目标和本场安全专题定位。</p>
+              </div>
+            </article>
+            <article class="agenda-item">
+              <div class="agenda-time">10-70</div>
+              <div>
+                <h4>安全专题分享</h4>
+                <p>讲解钱包科普、冷钱包与热钱包、攻击案例和硬件钱包安全实践。</p>
+              </div>
+            </article>
+            <article class="agenda-item">
+              <div class="agenda-time">70-85</div>
+              <div>
+                <h4>现场问答</h4>
+                <p>围绕学生真实问题进行答疑，鼓励提出高质量安全场景问题。</p>
+              </div>
+            </article>
+            <article class="agenda-item">
+              <div class="agenda-time">85-120</div>
+              <div>
+                <h4>知识竞赛与自由交流</h4>
+                <p>通过安全知识竞赛抽取 OneKey 钱包，活动后开放行业和实习交流。</p>
+              </div>
+            </article>
+          </aside>
+        </div>
+
+        <div class="xmu-section-title">OneKey 可提供的活动支持</div>
+        <div class="support-grid">
+          <article class="support-card">
+            <strong>Content</strong>
+            <h3>专业安全内容</h3>
+            <p>由 OneKey 准备主题分享内容，覆盖数字主权、钱包类型、攻击案例和硬件钱包使用实践。</p>
+          </article>
+
+          <article class="support-card">
+            <strong>Sponsorship</strong>
+            <h3>硬件钱包赞助</h3>
+            <p>提供多台 OneKey 硬件钱包作为知识竞赛抽奖礼品，也可作为社团骨干激励。</p>
+          </article>
+
+          <article class="support-card">
+            <strong>Materials</strong>
+            <h3>现场物料支持</h3>
+            <p>支持定制化 Roll-up 易拉宝 2-3 个，并可提供渔夫帽、茶杯、沙滩巾等限量周边。</p>
+          </article>
+
+          <article class="support-card">
+            <strong>Operation</strong>
+            <h3>现场执行协同</h3>
+            <p>OneKey 负责内容、讲师、礼品和物料；建议 3-5 名社团同学协助签到、引导与分发。</p>
+          </article>
+
+          <article class="support-card">
+            <strong>Promotion</strong>
+            <h3>宣传配合</h3>
+            <p>可配合校方或社团完成联名海报、报名文案、线上预热和活动前提醒。</p>
+          </article>
+
+          <article class="support-card">
+            <strong>Boundary</strong>
+            <h3>专场活动建议</h3>
+            <p>建议厦门大学站作为 OneKey Academy 专场，确保内容深度、视觉统一和学生体验纯粹。</p>
+          </article>
+        </div>
+
+        <div class="xmu-bottom">
+          <div>
+            <div class="xmu-section-title">筹备节奏</div>
+            <div class="timeline dark-timeline">
+              <article class="time-card" data-step="T-3">
+                <h3>T-3 Week</h3>
+                <p>确定场地、合作单位、活动主题与宣传海报，开启报名和线上预热。</p>
+              </article>
+              <article class="time-card" data-step="T-1">
+                <h3>T-1 Week</h3>
+                <p>确认报名名单、现场流程、志愿者分工，完成物料和礼品到场检查。</p>
+              </article>
+              <article class="time-card" data-step="D-0">
+                <h3>Day 0</h3>
+                <p>完成签到、宣讲、问答、知识竞赛、抽奖与自由交流，沉淀活动反馈。</p>
+              </article>
+            </div>
+          </div>
+
+          <div>
+            <div class="xmu-section-title" id="xmu-value">厦门大学站活动价值</div>
+            <div class="xmu-values">
+              <article class="xmu-value">
+                <h3>学生安全教育</h3>
+                <p>帮助学生理解钱包、私钥、助记词和常见攻击风险，建立数字资产安全意识。</p>
+              </article>
+              <article class="xmu-value">
+                <h3>前沿行业认知</h3>
+                <p>把 Web3 安全实践带入校园语境，补充课堂之外的真实案例和行业视角。</p>
+              </article>
+              <article class="xmu-value">
+                <h3>校园活动质量</h3>
+                <p>支持相关社团举办主题明确、流程成熟、互动充分的高质量专题活动。</p>
+              </article>
+              <article class="xmu-value">
+                <h3>实习就业交流</h3>
+                <p>为对 Web3、安全、产品感兴趣的学生提供行业交流和岗位了解机会。</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing">
+        <div class="closing-card">
+          <div>
+            <p class="eyebrow">Next Campus Stop</p>
+            <h2>期待与厦门大学共同打造下一站。</h2>
+            <p>
+              OneKey Academy 愿意带着已经验证过的校园活动经验、专业安全内容、硬件钱包赞助、宣传物料和现场执行支持，与厦门大学一起完成一场兼具教育意义、实践价值和校园影响力的数字资产安全专题活动。
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#top">返回顶部</a>
+              <a class="button" href="https://onekey.so/zh_CN/" target="_blank" rel="noreferrer">了解 OneKey</a>
+            </div>
+          </div>
+          <div class="closing-badge" aria-hidden="true">XMU</div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
