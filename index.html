@@ -605,8 +605,37 @@
       text-transform: uppercase;
     }
 
+    .xmu-theme {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 1rem;
+    }
+
+    .xmu-theme-cn {
+      display: block;
+      margin-bottom: 0.65rem;
+      color: var(--white);
+      font-family: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "STSong", serif;
+      font-size: clamp(2.1rem, 4.6vw, 4.7rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.06em;
+    }
+
+    .xmu-theme-en {
+      display: block;
+      max-width: 34rem;
+      color: var(--green);
+      font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+      font-size: clamp(1rem, 1.8vw, 1.55rem);
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -0.035em;
+      text-transform: uppercase;
+    }
+
     .xmu-hero-panel h3 {
-      max-width: 12ch;
+      max-width: 13ch;
       margin-bottom: 1rem;
       color: var(--white);
       font-size: clamp(2.1rem, 4.6vw, 4.8rem);
@@ -740,38 +769,9 @@
       line-height: 1.75;
     }
 
-    .xmu-bottom {
-      display: grid;
-      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .timeline.dark-timeline {
-      margin-top: 0;
-    }
-
-    .dark-timeline .time-card {
-      min-height: 12rem;
-      border-color: rgba(255, 255, 255, 0.14);
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .dark-timeline .time-card::after {
-      color: rgba(255, 255, 255, 0.05);
-    }
-
-    .dark-timeline .time-card h3 {
-      color: var(--green);
-    }
-
-    .dark-timeline .time-card p {
-      color: rgba(255, 253, 248, 0.74);
-    }
-
     .xmu-values {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 1rem;
     }
 
@@ -954,7 +954,6 @@
       .cases,
       .plan-grid,
       .xmu-showcase,
-      .xmu-bottom,
       .timeline,
       .values {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -964,8 +963,8 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .xmu-bottom {
-        grid-template-columns: 1fr;
+      .xmu-values {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .gallery {
@@ -992,18 +991,47 @@
         grid-template-columns: 1fr;
       }
 
+      body {
+        background:
+          radial-gradient(circle at 20% 2%, rgba(167, 215, 54, 0.2), transparent 18rem),
+          linear-gradient(145deg, #fbf7ed 0%, #ede3d1 58%, #f8f4ea 100%);
+      }
+
       .hero {
         min-height: auto;
-        padding-top: 3rem;
+        padding: 2.4rem 1rem 3rem;
       }
 
       h1 {
-        max-width: 9ch;
-        font-size: clamp(3.6rem, 22vw, 5.8rem);
+        max-width: 10ch;
+        font-size: clamp(3.05rem, 17vw, 4.7rem);
+        line-height: 1.04;
+      }
+
+      section {
+        padding: 3.6rem 1rem;
+      }
+
+      .section-heading {
+        gap: 1rem;
+        margin-bottom: 1.6rem;
+      }
+
+      .section-heading h2 {
+        font-size: clamp(2rem, 11vw, 3.15rem);
+        line-height: 1.14;
+      }
+
+      .hero-lede,
+      .section-heading p,
+      .mission-panel p,
+      .xmu-hero-panel p {
+        font-size: 0.98rem;
+        line-height: 1.82;
       }
 
       .hero-card {
-        min-height: 28rem;
+        min-height: 24rem;
         border-radius: 1.6rem;
       }
 
@@ -1013,13 +1041,20 @@
         bottom: 1rem;
       }
 
+      .hero-actions {
+        width: 100%;
+      }
+
+      .button {
+        width: 100%;
+      }
+
       .stats,
       .cases,
       .plan-grid,
       .xmu-showcase,
       .xmu-keypoints,
       .support-grid,
-      .xmu-bottom,
       .xmu-values,
       .timeline,
       .values,
@@ -1029,6 +1064,61 @@
 
       .stat {
         min-height: 7.5rem;
+      }
+
+      .stats {
+        border-radius: 1.35rem;
+      }
+
+      .case-card,
+      .mission-panel,
+      .xmu-hero-panel,
+      .support-card,
+      .closing-card {
+        border-radius: 1.35rem;
+      }
+
+      .case-card img {
+        height: 13.2rem;
+      }
+
+      .case-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .xmu-showcase {
+        gap: 0.9rem;
+      }
+
+      .xmu-hero-panel {
+        min-height: auto;
+        padding: 1.25rem;
+      }
+
+      .xmu-theme-cn {
+        font-size: clamp(2rem, 12vw, 3.05rem);
+      }
+
+      .xmu-theme-en {
+        font-size: 0.95rem;
+        letter-spacing: 0.02em;
+      }
+
+      .agenda-item {
+        grid-template-columns: 1fr;
+        gap: 0.45rem;
+      }
+
+      .agenda-time {
+        font-size: 0.92rem;
+      }
+
+      .support-card {
+        min-height: auto;
+      }
+
+      .closing-badge {
+        min-height: 9rem;
       }
 
       .gallery {
@@ -1256,7 +1346,10 @@
         <div class="xmu-showcase">
           <article class="xmu-hero-panel">
             <span class="theme-label">Proposed Theme</span>
-            <h3>A Survivor’s Guide to the Web3 Dark Forest</h3>
+            <h3 class="xmu-theme">
+              <span class="xmu-theme-cn">Web3 黑暗森林生存指南</span>
+              <span class="xmu-theme-en">A Survivor's Guide to the Web3 Dark Forest</span>
+            </h3>
             <p>
               面向厦门大学学生，以“数字资产安全”为核心，讲清从 Web2 到 Web3 的数字主权变化、钱包基础概念、冷钱包与热钱包差异，以及真实软件钱包攻击案例。活动不是泛泛介绍 Web3，而是帮助学生建立可落地的安全判断能力。
             </p>
@@ -1338,46 +1431,24 @@
           </article>
         </div>
 
-        <div class="xmu-bottom">
-          <div>
-            <div class="xmu-section-title">筹备节奏</div>
-            <div class="timeline dark-timeline">
-              <article class="time-card" data-step="T-3">
-                <h3>T-3 Week</h3>
-                <p>确定场地、合作单位、活动主题与宣传海报，开启报名和线上预热。</p>
-              </article>
-              <article class="time-card" data-step="T-1">
-                <h3>T-1 Week</h3>
-                <p>确认报名名单、现场流程、志愿者分工，完成物料和礼品到场检查。</p>
-              </article>
-              <article class="time-card" data-step="D-0">
-                <h3>Day 0</h3>
-                <p>完成签到、宣讲、问答、知识竞赛、抽奖与自由交流，沉淀活动反馈。</p>
-              </article>
-            </div>
-          </div>
-
-          <div>
-            <div class="xmu-section-title" id="xmu-value">厦门大学站活动价值</div>
-            <div class="xmu-values">
-              <article class="xmu-value">
-                <h3>学生安全教育</h3>
-                <p>帮助学生理解钱包、私钥、助记词和常见攻击风险，建立数字资产安全意识。</p>
-              </article>
-              <article class="xmu-value">
-                <h3>前沿行业认知</h3>
-                <p>把 Web3 安全实践带入校园语境，补充课堂之外的真实案例和行业视角。</p>
-              </article>
-              <article class="xmu-value">
-                <h3>校园活动质量</h3>
-                <p>支持相关社团举办主题明确、流程成熟、互动充分的高质量专题活动。</p>
-              </article>
-              <article class="xmu-value">
-                <h3>实习就业交流</h3>
-                <p>为对 Web3、安全、产品感兴趣的学生提供行业交流和岗位了解机会。</p>
-              </article>
-            </div>
-          </div>
+        <div class="xmu-section-title" id="xmu-value">厦门大学站活动价值</div>
+        <div class="xmu-values">
+          <article class="xmu-value">
+            <h3>学生安全教育</h3>
+            <p>帮助学生理解钱包、私钥、助记词和常见攻击风险，建立数字资产安全意识。</p>
+          </article>
+          <article class="xmu-value">
+            <h3>前沿行业认知</h3>
+            <p>把 Web3 安全实践带入校园语境，补充课堂之外的真实案例和行业视角。</p>
+          </article>
+          <article class="xmu-value">
+            <h3>校园活动质量</h3>
+            <p>支持相关社团举办主题明确、流程成熟、互动充分的高质量专题活动。</p>
+          </article>
+          <article class="xmu-value">
+            <h3>实习就业交流</h3>
+            <p>为对 Web3、安全、产品感兴趣的学生提供行业交流和岗位了解机会。</p>
+          </article>
         </div>
       </section>
 
